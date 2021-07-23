@@ -3,6 +3,7 @@ import QrReader from "react-qr-reader";
 
 const QrScanner = () => {
   const [result, setResult] = React.useState();
+  const [errMsg, setErrMsg] = React.useState();
 
   const handleScan = (data: any) => {
     if (data) {
@@ -12,7 +13,7 @@ const QrScanner = () => {
   };
 
   const handleError = (err: any) => {
-    console.log(err);
+    setErrMsg(err);
   };
 
   return (
@@ -24,6 +25,7 @@ const QrScanner = () => {
         style={{ width: "100%" }}
       />
       <p>result: {result}</p>
+      {errMsg && <p>{errMsg}</p>}
     </>
   );
 };
