@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Button, Modal } from "antd";
+import QrScanner from "./components/QrScanner";
 
-function App() {
+const App = () => {
+  const [modalVisible, setModalVisible] = React.useState<boolean>(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ width: 100, margin: "auto" }}>
+      <Button onClick={() => setModalVisible(true)}>Open scanner</Button>
+      <Modal
+        visible={modalVisible}
+        onCancel={() => setModalVisible(false)}
+        onOk={() => setModalVisible(false)}
+      >
+        {modalVisible && <QrScanner />}
+      </Modal>
     </div>
   );
-}
+};
 
 export default App;
