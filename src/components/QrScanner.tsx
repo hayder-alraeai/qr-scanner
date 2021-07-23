@@ -16,12 +16,15 @@ const QrScanner = () => {
   };
 
   return (
-    <QrReader
-      delay={300}
-      onError={handleError}
-      onScan={handleScan}
-      style={{ width: "100%" }}
-    />
+    <>
+      <QrReader
+        delay={300}
+        onError={handleError}
+        onScan={handleScan}
+        style={{ width: "100%" }}
+      />
+      <p>result: {result}</p>
+    </>
   );
 };
 
